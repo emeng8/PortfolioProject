@@ -4,7 +4,7 @@
 
 SELECT
 	branch,
-  SUM(gross_income) AS total_gross_income_by_branch
+	SUM(gross_income) AS total_gross_income_by_branch
 FROM supermarket_salesSheet2
 GROUP BY branch;
 
@@ -12,7 +12,7 @@ GROUP BY branch;
 
 SELECT TOP 1 
 	branch,
-  COUNT(invoice_id) AS total_sales
+	COUNT(invoice_id) AS total_sales
 FROM supermarket_salesSheet2
 GROUP BY branch
 ORDER BY total_sales DESC;
@@ -21,8 +21,8 @@ ORDER BY total_sales DESC;
 
 SELECT
 	branch,
-  AVG(rating) AS average_rating,
-  STDEV(rating) AS rating_variation
+	AVG(rating) AS average_rating,
+	STDEV(rating) AS rating_variation
 FROM supermarket_salesSheet2
 GROUP BY branch;
 
@@ -30,7 +30,7 @@ GROUP BY branch;
 
 SELECT
 	product_line,
-  COUNT(invoice_id) AS total_sales
+	COUNT(invoice_id) AS total_sales
 FROM supermarket_salesSheet2
 GROUP BY product_line
 ORDER BY total_sales DESC;
@@ -39,17 +39,17 @@ ORDER BY total_sales DESC;
 
 SELECT
 	payment,
-  COUNT(invoice_id) AS total_transactions,
-  SUM(total) AS total_sales
+	COUNT(invoice_id) AS total_transactions,
+	SUM(total) AS total_sales
 FROM supermarket_salesSheet2
 GROUP BY payment;
 
 --What is the highest and lowest unit price for each product line?
 
 SELECT
-	product_line,
-  MAX(unit_price) AS highest_unit_price,
-  MIN(unit_price) AS lowest_unit_price
+ 	product_line,
+ 	MAX(unit_price) AS highest_unit_price,
+	MIN(unit_price) AS lowest_unit_price
 FROM supermarket_salesSheet2
 GROUP BY product_line;
 
@@ -57,7 +57,7 @@ GROUP BY product_line;
 
 SELECT
 	customer_type,
-  AVG(quantity) AS average_quantity
+	AVG(quantity) AS average_quantity
 FROM supermarket_salesSheet2
 GROUP BY customer_type;
 
@@ -73,7 +73,7 @@ GROUP BY city;
 
 SELECT TOP 1
 	product_line,
-  SUM(gross_income) AS highest_gross_income
+	SUM(gross_income) AS highest_gross_income
 FROM supermarket_salesSheet2
 GROUP BY product_line
 ORDER BY highest_gross_income DESC;
@@ -91,8 +91,8 @@ WITH Product_Sales AS (
 )
 SELECT
 	branch,
-  product_line,
-  total_quantity
+	product_line,
+  	total_quantity
 FROM Product_Sales
 WHERE rn <= 5;
 
@@ -100,7 +100,7 @@ WHERE rn <= 5;
 
 SELECT TOP 1
 	date,
-  MAX(total_sales) AS highest_sales
+  	MAX(total_sales) AS highest_sales
 FROM (
   SELECT
 	date,
@@ -114,11 +114,11 @@ GROUP BY date;
 
 SELECT TOP 1 
 	time,
-  MAX(number_of_sales)
+  	MAX(number_of_sales)
  FROM (
    SELECT 
-     time, 
-     COUNT(invoice_id) AS number_of_sales
+    	time, 
+    	COUNT(invoice_id) AS number_of_sales
    FROM supermarket_salesSheet2
    GROUP BY time
    ) AS Shopping_Time
@@ -128,7 +128,7 @@ GROUP BY time;
 
 SELECT
 	product_line,
-  AVG((gross_income/total) * 100) AS gross_margin_percentage1
+  	AVG((gross_income/total) * 100) AS gross_margin_percentage1
 FROM supermarket_salesSheet2
 GROUP BY product_line;
    
@@ -136,8 +136,8 @@ GROUP BY product_line;
 
 SELECT
 	branch,
-  AVG(rating) AS average_rating,
-  SUM(total) AS total_revenue
+ 	AVG(rating) AS average_rating,
+  	SUM(total) AS total_revenue
 FROM supermarket_salesSheet2
 GROUP BY branch
 ORDER BY average_rating DESC, total_revenue DESC;
@@ -146,7 +146,7 @@ ORDER BY average_rating DESC, total_revenue DESC;
 
 SELECT
 	gender,
-  COUNT(invoice_id) AS purchases
+  	COUNT(invoice_id) AS purchases
 FROM supermarket_salesSheet2
 GROUP BY gender
 ORDER BY purchases DESC; 
